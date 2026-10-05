@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Order | Golden Aura Cosmetics</title>
+  <meta name="description" content="Build a custom order or gift set with Golden Aura Cosmetics choose your range, products and personalisation.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="custom-order-page">
+
+  <header>
+    <div class="logo">
+      <h1>Golden Aura Cosmetics</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="Index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="products/services.html">Products</a></li>
+        <li><a href="enquiry.html">Custom Order</a></li>
+        <li><a href="enquiry.html">Enquiry</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-intro">
+      <h2>Build Your Custom Order</h2>
+      <p>
+        Want to mix and match products across ranges, personalise a gift set, or
+        order in bulk? Fill in the form below and our team will put together a
+        quote tailored to you.
+      </p>
+    </section>
+
+    <section class="custom-order-form">
+      <form action="#" method="post">
+
+        <fieldset>
+          <legend>Your Details</legend>
+
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" name="full-name" required>
+
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone">
+        </fieldset>
+
+        <fieldset>
+          <legend>Choose Your Range(s)</legend>
+
+          <label><input type="checkbox" name="range" value="abundance"> Abundance Range</label><br>
+          <label><input type="checkbox" name="range" value="love-self-care"> Love &amp; Self-Care Range</label><br>
+          <label><input type="checkbox" name="range" value="confidence"> Confidence Range</label><br>
+          <label><input type="checkbox" name="range" value="calm-peace"> Calm &amp; Peace Range</label><br>
+          <label><input type="checkbox" name="range" value="glow-radiance"> Glow &amp; Radiance Range</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Order Details</legend>
+
+          <label for="products">Which products would you like included?</label>
+          <textarea id="products" name="products" rows="4" placeholder="e.g. 2x Abundance Body Lotion, 1x Confidence Perfume"></textarea>
+
+          <label for="quantity">Estimated Total Quantity</label>
+          <input type="number" id="quantity" name="quantity" min="1">
+
+          <label for="order-type">Order Type</label>
+          <select id="order-type" name="order-type">
+            <option value="">Select an option</option>
+            <option value="personal">Personal Order</option>
+            <option value="gift">Gift / Gift Set</option>
+            <option value="bulk">Bulk / Wholesale Order</option>
+            <option value="event">Event or Corporate Gifting</option>
+          </select>
+        </fieldset>
+
+        <fieldset>
+          <legend>Personalisation</legend>
+
+          <label for="gift-message">Gift Message (optional)</label>
+          <textarea id="gift-message" name="gift-message" rows="3" placeholder="Add a personal note to include with your order"></textarea>
+
+          <label for="packaging">Packaging Preference</label>
+          <select id="packaging" name="packaging">
+            <option value="standard">Standard Packaging</option>
+            <option value="gift-box">Gold-Accented Gift Box</option>
+            <option value="eco">Eco-Friendly Packaging</option>
+          </select>
+        </fieldset>
+
+        <fieldset>
+          <legend>Additional Notes</legend>
+          <label for="notes">Anything else we should know?</label>
+          <textarea id="notes" name="notes" rows="4"></textarea>
+        </fieldset>
+
+        <button type="submit">Submit Custom Order Request</button>
+
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2026 Golden Aura Cosmetics. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
