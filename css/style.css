@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
-
 :root {
   /* Brand colours and shared design values */
   --sage: #9caf88;
@@ -318,6 +316,160 @@ blockquote {
 
 .faq-item p {
   margin-bottom: 0;
+}
+
+.faq-item summary {
+  color: var(--sage-deep);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.faq-item[open] summary {
+  margin-bottom: 0.75rem;
+}
+
+.product-browser {
+  width: min(100%, 75rem);
+  margin: 0 auto;
+  padding: 1.5rem 0 3rem;
+}
+
+.product-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.product-controls label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 700;
+}
+
+.product-controls input,
+.product-controls select {
+  width: 100%;
+}
+
+.product-results {
+  min-height: 1.6em;
+  margin: 1rem 0;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.product-card h3,
+.product-card p {
+  margin: 0;
+}
+
+.product-card > a {
+  margin-top: auto;
+  color: var(--sage-deep);
+  font-weight: 700;
+}
+
+.product-price {
+  font-weight: 700;
+}
+
+.product-image-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+}
+
+.product-image-button:hover,
+.product-image-button:focus-visible {
+  background: transparent;
+  border: 0;
+}
+
+.product-image-button img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  transition: transform 180ms ease;
+}
+
+.product-image-button:hover img,
+.product-image-button:focus-visible img {
+  transform: scale(1.04);
+}
+
+.lightbox {
+  width: min(92vw, 56rem);
+  max-width: none;
+  max-height: 90vh;
+  margin: auto;
+  padding: 1rem;
+  color: var(--text);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.lightbox::backdrop {
+  background: rgba(25, 32, 24, 0.78);
+}
+
+.lightbox form {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.lightbox img {
+  width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+}
+
+.lightbox p {
+  margin: 0.75rem 0 0;
+  font-weight: 700;
+}
+
+.enquiry-result {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 0.3rem solid var(--gold);
+  border-radius: var(--radius);
+}
+
+.estimate-warning {
+  padding: 0.75rem;
+  color: #6b3b00;
+  background: #fff3d6;
+  border-radius: 0.35rem;
+}
+
+.enquiry-result[hidden] {
+  display: none;
+}
+
+.range-options {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.range-options label {
+  font-weight: 400;
+}
+
+.range-options input {
+  accent-color: var(--sage-dark);
 }
 
 /* Newsletter and shared form controls. */
@@ -878,10 +1030,8 @@ main > .audience-band {
 
 /* Shop page centres the brand image while keeping it within the viewport. */
 .shop-page main {
-  display: grid;
-  place-items: center;
-  min-height: 70vh;
-  padding: 2rem;
+  min-height: 0;
+  padding: 0;
 }
 
 .shop-brand {
@@ -912,6 +1062,10 @@ main > .audience-band {
 @media (max-width: 1024px) {
   .range-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .product-controls {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 

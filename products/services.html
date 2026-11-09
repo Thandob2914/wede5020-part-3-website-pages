@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=../shop%20page.html">
-  <meta name="description" content="Explore the self-care ranges from Golden Aura Cosmetics.">
-  <title>Products and Services | Golden Aura Cosmetics</title>
+  <meta name="description" content="Explore Golden Aura Cosmetics self-care ranges, compare estimated prices and find the products that fit your daily ritual.">
+  <title>Shop Self-Care Ranges | Golden Aura Cosmetics</title>
+  <link rel="canonical" href="https://emgpsd.github.io/wede5020-2026-part-3-st10526409/products/services.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap">
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body class="shop-page">
   <header>
     <div class="logo">
       <h1>Golden Aura Cosmetics</h1>
     </div>
     <nav aria-label="Main navigation">
       <ul>
-        <li><a href="../Index.html">Home</a></li>
+        <li><a href="../index.html">Home</a></li>
         <li><a href="../about.html">About Us</a></li>
-        <li><a href="../shop%20page.html" aria-current="page">Products</a></li>
+        <li><a href="services.html" aria-current="page">Products</a></li>
         <li><a href="../enquiry.html">Custom Order</a></li>
         <li><a href="../contact.html">Contact</a></li>
       </ul>
@@ -25,16 +28,49 @@
   </header>
 
   <main>
-    <section>
-      <h1>Products and Services</h1>
-      <p><a href="../shop%20page.html">Continue to Golden Aura Shop</a></p>
+    <section class="page-intro">
+      <h2>Find Your Self-Care Range</h2>
+      <p>Explore our intention-led collections. Search by range or product type, sort by name or estimated price, and select an image to view it larger.</p>
+    </section>
+
+    <section class="product-browser" aria-label="Product range browser">
+      <div class="product-controls">
+        <div>
+          <label for="product-search">Search ranges</label>
+          <input type="search" id="product-search" placeholder="Try “calm” or “body oil”">
+        </div>
+        <div>
+          <label for="product-sort">Sort ranges</label>
+          <select id="product-sort">
+            <option value="name-asc">Name: A to Z</option>
+            <option value="name-desc">Name: Z to A</option>
+            <option value="price-asc">Price: low to high</option>
+            <option value="price-desc">Price: high to low</option>
+          </select>
+        </div>
+      </div>
+      <p id="product-results" class="product-results" role="status" aria-live="polite">Loading product ranges…</p>
+      <div id="product-list" class="range-cards" aria-live="polite"></div>
     </section>
   </main>
+
+  <dialog class="lightbox" id="product-lightbox" aria-label="Product image">
+    <form method="dialog">
+      <button class="lightbox-close" aria-label="Close image">Close</button>
+    </form>
+    <img id="lightbox-image" alt="">
+    <p id="lightbox-caption"></p>
+  </dialog>
 
   <footer>
     <div class="footer-content">
       <p>&copy; 2026 Golden Aura Cosmetics. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/goldenauracosmetics/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://wa.me/27671446283" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
     </div>
   </footer>
+  <script src="../js/shop.js"></script>
 </body>
 </html>

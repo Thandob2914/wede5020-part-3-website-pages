@@ -3,16 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=custom-page.html">
-  <title>Enquiry | Golden Aura Cosmetics</title>
+  <meta name="description" content="Request a Golden Aura Cosmetics custom order estimate. Choose your self-care ranges, quantity and packaging.">
+  <title>Custom Order Enquiry | Golden Aura Cosmetics</title>
+  <link rel="canonical" href="https://emgpsd.github.io/wede5020-2026-part-3-st10526409/enquiry.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="custom-order-page">
+  <header>
+    <div class="logo">
+      <h1>Golden Aura Cosmetics</h1>
+    </div>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="products/services.html">Products</a></li>
+        <li><a href="enquiry.html" aria-current="page">Custom Order</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <main>
-    <section>
-      <h1>Enquiry</h1>
-      <p><a href="custom-page.html">Continue to the custom order enquiry form</a></p>
+    <section class="page-intro">
+      <h2>Build Your Custom Order</h2>
+      <p>Choose your product ranges, order size and packaging to receive an immediate estimate. Our team will confirm the final quote and availability.</p>
+    </section>
+
+    <section class="custom-order-form" aria-labelledby="enquiry-title">
+      <h2 id="enquiry-title">Order details</h2>
+      <form id="enquiry-form" action="enquiry.html" method="get">
+        <fieldset>
+          <legend>Your details</legend>
+          <label for="full-name">Full name</label>
+          <input type="text" id="full-name" name="full-name" autocomplete="name" minlength="2" required>
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+          <label for="phone">Phone number (optional)</label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel" pattern="(\+27|0)[0-9\s-]{9,12}">
+        </fieldset>
+
+        <fieldset>
+          <legend>Choose at least one range</legend>
+          <div class="range-options">
+            <label><input type="checkbox" name="range" value="abundance"> Abundance</label>
+            <label><input type="checkbox" name="range" value="love-self-care"> Love &amp; Self-Care</label>
+            <label><input type="checkbox" name="range" value="confidence"> Confidence</label>
+            <label><input type="checkbox" name="range" value="calm-peace"> Calm &amp; Peace</label>
+            <label><input type="checkbox" name="range" value="glow-radiance"> Glow &amp; Radiance</label>
+          </div>
+          <span id="range-error" class="field-error" role="alert"></span>
+        </fieldset>
+
+        <fieldset>
+          <legend>Order details</legend>
+          <label for="quantity">Estimated total quantity</label>
+          <input type="number" id="quantity" name="quantity" min="1" max="100000" step="1" required>
+          <label for="order-type">Order type</label>
+          <select id="order-type" name="order-type" required>
+            <option value="">Select an order type</option>
+            <option value="personal">Personal order</option>
+            <option value="gift">Gift / gift set</option>
+            <option value="bulk">Bulk / wholesale order</option>
+            <option value="event">Event or corporate gifting</option>
+          </select>
+          <label for="products">Products you are interested in (optional)</label>
+          <textarea id="products" name="products" rows="3" placeholder="For example: body lotion, oil and mist"></textarea>
+        </fieldset>
+
+        <fieldset>
+          <legend>Personalisation</legend>
+          <label for="packaging">Packaging preference</label>
+          <select id="packaging" name="packaging" required>
+            <option value="standard">Standard packaging</option>
+            <option value="gift-box">Gold-accented gift box</option>
+            <option value="eco">Eco-friendly packaging</option>
+          </select>
+          <label for="gift-message">Gift message (optional)</label>
+          <textarea id="gift-message" name="gift-message" rows="3"></textarea>
+          <label for="notes">Additional notes (optional)</label>
+          <textarea id="notes" name="notes" rows="3"></textarea>
+        </fieldset>
+
+        <button type="submit">Calculate my estimate</button>
+      </form>
+      <section id="enquiry-result" class="enquiry-result" tabindex="-1" aria-live="polite" hidden></section>
     </section>
   </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2026 Golden Aura Cosmetics. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/goldenauracosmetics/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://wa.me/27671446283" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+  <script src="js/validation.js"></script>
+  <script src="js/enquiry.js"></script>
 </body>
 </html>

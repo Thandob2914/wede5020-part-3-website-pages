@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var isFormValid = true;
       var firstInvalid = null;
  
-      form.querySelectorAll("input, textarea, select").forEach(function (field) {
+      form.querySelectorAll("input:not([type='hidden']), textarea, select").forEach(function (field) {
         if (!validateField(field)) {
           isFormValid = false;
           if (!firstInvalid) {
@@ -22,7 +22,18 @@ document.addEventListener("DOMContentLoaded", function () {
       });
  
       if (isFormValid) {
-        showSuccess(form);
+        if (form.dataset.mailto) {
+          // Contact form: compile the details into an email
+          var link = buildMailto(form);
+          showSuccess(
+            form,
+            "Thank you! Your email is ready. Your email app should open so you can press send. If it does not open, ",
+            link
+          );
+          window.location.href = link;
+        } else {
+          showSuccess(form, "Thank you! Your form has been submitted.");
+        }
         form.reset();
       } else {
         firstInvalid.focus();
@@ -31,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
  
     // Live feedback: check a field when the user leaves it,
     // and re-check while typing once an error is showing
-    form.querySelectorAll("input, textarea, select").forEach(function (field) {
+    form.querySelectorAll("input:not([type='hidden']), textarea, select").forEach(function (field) {
       field.addEventListener("blur", function () {
         validateField(field);
       });
@@ -97,11 +108,21 @@ function getError(field) {
  
   if (field.type === "number") {
     var num = Number(value);
+    if (!Number.isFinite(num)) {
+      return "Please enter a valid number.";
+    }
     if (field.min !== "" && num < Number(field.min)) {
       return "Value must be at least " + field.min + ".";
     }
     if (field.max !== "" && num > Number(field.max)) {
       return "Value must be no more than " + field.max + ".";
+    }
+    if (field.step && field.step !== "any" && Number.isFinite(Number(field.step))) {
+      var step = Number(field.step);
+      var min = field.min === "" ? 0 : Number(field.min);
+      if (Math.abs((num - min) / step - Math.round((num - min) / step)) > 1e-8) {
+        return "Please enter a value in increments of " + field.step + ".";
+      }
     }
   }
  
@@ -111,9 +132,9 @@ function getError(field) {
 /* ---------- Show / hide errors ---------- */
 function validateField(field) {
   var message = getError(field);
-  var errorBox = getErrorBox(field);
- 
+
   if (message) {
+    var errorBox = getErrorBox(field);
     field.classList.add("invalid");
     field.setAttribute("aria-invalid", "true");
     errorBox.textContent = message;
@@ -122,7 +143,10 @@ function validateField(field) {
  
   field.classList.remove("invalid");
   field.removeAttribute("aria-invalid");
-  errorBox.textContent = "";
+  var errorBox = document.getElementById(field.id + "-error");
+  if (errorBox) {
+    errorBox.textContent = "";
+  }
   return true;
 }
  
@@ -142,18 +166,55 @@ function getErrorBox(field) {
 }
  
 /* ---------- Success message ---------- */
-function showSuccess(form) {
+function showSuccess(form, message, mailtoLink) {
   var note = document.createElement("p");
   note.className = "form-success";
   note.setAttribute("role", "status");
-  note.textContent = "Thank you! Your message has been sent. We will respond within 1-2 business days.";
+  note.textContent = message;
+
+  if (mailtoLink) {
+    var anchor = document.createElement("a");
+    anchor.href = mailtoLink;
+    anchor.textContent = "click here to open the email";
+    note.appendChild(anchor);
+    note.appendChild(document.createTextNode("."));
+  }
   form.appendChild(note);
 }
  
+/* ---------- Compile the form into an email ---------- */
+function buildMailto(form) {
+  var to = form.dataset.mailto;
+  var typeField = form.querySelector('[name="message-type"]');
+  var subjectField = form.querySelector('[name="subject"]');
+
+  // Subject line: "Type of message - subject"
+  var subject = typeField && typeField.value ? typeField.value : "Website message";
+  if (subjectField && subjectField.value.trim() !== "") {
+    subject += " - " + subjectField.value.trim();
+  }
+
+  // Body: one line per field, using each field's label
+  var lines = [];
+  form.querySelectorAll("input, textarea, select").forEach(function (field) {
+    if (field.name === "subject") {
+      return; // already in the subject line
+    }
+    var label = form.querySelector('label[for="' + field.id + '"]');
+    var text = label ? label.textContent.trim() : field.name;
+    lines.push(text + ": " + field.value.trim());
+  });
+
+  return (
+    "mailto:" + to +
+    "?subject=" + encodeURIComponent(subject) +
+    "&body=" + encodeURIComponent(lines.join("\n"))
+  );
+}
+
 function clearSuccess(form) {
   var old = form.querySelector(".form-success");
   if (old) {
     old.remove();
   }
 }
- 
