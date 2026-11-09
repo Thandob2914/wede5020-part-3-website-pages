@@ -334,6 +334,26 @@ blockquote {
   padding: 1.5rem 0 3rem;
 }
 
+.product-catalog {
+  width: min(100% - 2.5rem, 60rem);
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+.product-catalog img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.product-catalog figcaption {
+  margin-top: 0.5rem;
+  color: var(--sage-deep);
+  font-size: 0.9rem;
+}
+
 .product-controls {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

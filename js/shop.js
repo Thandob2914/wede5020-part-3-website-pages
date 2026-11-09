@@ -78,8 +78,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     list.replaceChildren();
     results.textContent = visibleProducts.length === 1
-      ? "1 range found."
-      : visibleProducts.length + " ranges found.";
+      ? "1 product or range found."
+      : visibleProducts.length + " products and ranges found.";
 
     visibleProducts.forEach(function (product) {
       var article = document.createElement("article");
@@ -107,7 +107,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       var price = document.createElement("p");
       price.className = "product-price";
-      price.textContent = "From R" + Number(prices[product.id]).toFixed(2);
+      var pricePrefix = product.priceType === "fixed" ? "R" : "From R";
+      price.textContent = pricePrefix + Number(prices[product.id]).toFixed(2);
 
       var enquiryLink = document.createElement("a");
       enquiryLink.href = "../enquiry.html";

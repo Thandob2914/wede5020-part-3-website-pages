@@ -4,34 +4,63 @@
     "name": "Abundance Range",
     "description": "Warm, golden botanicals for a positive daily ritual. Explore body lotions, oils, scrubs and mists.",
     "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=720&q=80",
-    "alt": "Skincare bottles arranged on a light surface"
+    "alt": "Skincare bottles arranged on a light surface",
+    "priceType": "from"
   },
   {
     "id": "love-self-care",
     "name": "Love & Self-Care Range",
     "description": "Gentle, nurturing textures for moments of quiet self-love and everyday care.",
     "image": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=720&q=80",
-    "alt": "Self-care skincare products displayed together"
+    "alt": "Self-care skincare products displayed together",
+    "priceType": "from"
   },
   {
     "id": "confidence",
     "name": "Confidence Range",
     "description": "Bold, warm scents and silky textures for the days you want to feel unstoppable.",
     "image": "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=720&q=80",
-    "alt": "Cosmetic bottles in a minimal arrangement"
+    "alt": "Cosmetic bottles in a minimal arrangement",
+    "priceType": "from"
   },
   {
     "id": "calm-peace",
     "name": "Calm & Peace Range",
     "description": "Soft fragrances and lightweight oils for evenings that call for slowing down.",
     "image": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=720&q=80",
-    "alt": "Skincare products arranged for a calming ritual"
+    "alt": "Skincare products arranged for a calming ritual",
+    "priceType": "from"
   },
   {
     "id": "glow-radiance",
     "name": "Glow & Radiance Range",
     "description": "Luminous body mists and lotions designed to leave skin looking naturally radiant.",
     "image": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=720&q=80",
-    "alt": "Amber serum bottle in warm natural light"
+    "alt": "Amber serum bottle in warm natural light",
+    "priceType": "from"
+  },
+  {
+    "id": "bath-salts",
+    "name": "Calm & Unwind Bath Salts (250 g)",
+    "description": "A soothing mineral bath soak to help you relax and restore your evening ritual.",
+    "image": "../assets/calm-unwind-bath-salts.jpg",
+    "alt": "Jar of Golden Aura Calm & Unwind Bath Salts with bath salts and rose petals",
+    "priceType": "fixed"
+  },
+  {
+    "id": "gift-boxes",
+    "name": "Golden Aura Gift Boxes",
+    "description": "Thoughtful self-care gift boxes featuring Golden Aura products for a special occasion.",
+    "image": "../assets/golden-aura-gift-boxes.jpg",
+    "alt": "Golden Aura Cosmetics product catalogue featuring a self-care gift box",
+    "priceType": "fixed"
+  },
+  {
+    "id": "affirmation-cards",
+    "name": "Affirmation Cards",
+    "description": "Positive reminders to bring intention and encouragement to your daily routine.",
+    "image": "../assets/golden-aura-affirmation-cards.jpg",
+    "alt": "Golden Aura Cosmetics product catalogue featuring affirmation cards",
+    "priceType": "fixed"
   }
 ]
