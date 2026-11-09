@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     return;
   }
-
+  // Creates a background of animated roses and shimmering sparkles
   var ROSE_COUNT_DESKTOP = 14;
   var ROSE_COUNT_MOBILE = 6;
   var SHIMMER_COUNT_DESKTOP = 32;
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!container) {
     return;
   }
-
+   // Determines the number of roses and shimmers based on the screen width
   var count = window.innerWidth < 600 ? ROSE_COUNT_MOBILE : ROSE_COUNT_DESKTOP;
   var shimmerCount = window.innerWidth < 600 ? SHIMMER_COUNT_MOBILE : SHIMMER_COUNT_DESKTOP;
 
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var rose = document.createElement("div");
     var size = random(MIN_SIZE, MAX_SIZE);
     var duration = random(MIN_SPEED, MAX_SPEED);
-
+    // Sets the rose's class and styles for position, size, duration, delay, opacity, and sway
     rose.className = "gold-rose";
     rose.style.left = random(0, 95) + "%";
     rose.style.setProperty("--rose-size", size + "px");
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     container.appendChild(rose);
   }
-
+  // Creates shimmering sparkles with random positions, sizes, durations, and delays
   for (var j = 0; j < shimmerCount; j++) {
     var shimmer = document.createElement("span");
     var shimmerDuration = random(2, 5);

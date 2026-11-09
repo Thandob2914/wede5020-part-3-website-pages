@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!list || !results || !search || !sort || !lightbox || !lightboxImage || !lightboxCaption) {
     return;
   }
-
+// Fetch the product catalogue and pricing data
   var products = [];
   var prices = {};
 
@@ -36,20 +36,20 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!button) {
       return;
     }
-
+    // Shows the lightbox with the product image and caption
     var image = button.querySelector("img");
     lightboxImage.src = image.src;
     lightboxImage.alt = image.alt;
     lightboxCaption.textContent = button.dataset.productImage;
     lightbox.showModal();
   });
-
+   // Closes the lightbox when clicking outside the image
   lightbox.addEventListener("click", function (event) {
     if (event.target === lightbox) {
       lightbox.close();
     }
   });
-
+  //
   function readJsonResponse(response) {
     if (!response.ok) {
       throw new Error("Request failed with status " + response.status);
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var visibleProducts = products.filter(function (product) {
       return (product.name + " " + product.description).toLowerCase().includes(query);
     });
-
+    // Sorts the visible products based on the selected sort option
     visibleProducts.sort(function (a, b) {
       if (sort.value === "name-desc") {
         return b.name.localeCompare(a.name);
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       return a.name.localeCompare(b.name);
     });
-
+     // Clears the product list and updates the results message
     list.replaceChildren();
     results.textContent = visibleProducts.length === 1
       ? "1 product or range found."
@@ -84,13 +84,13 @@ document.addEventListener("DOMContentLoaded", function () {
     visibleProducts.forEach(function (product) {
       var article = document.createElement("article");
       article.className = "range-card product-card";
-
+      // Creates the product image button with lazy loading
       var imageButton = document.createElement("button");
       imageButton.className = "product-image-button";
       imageButton.type = "button";
       imageButton.dataset.productImage = product.name;
       imageButton.setAttribute("aria-label", "View image: " + product.name);
-
+      // Creates the product image with lazy loading
       var image = document.createElement("img");
       image.src = product.image;
       image.alt = product.alt;
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var enquiryLink = document.createElement("a");
       enquiryLink.href = "../enquiry.html";
       enquiryLink.textContent = "Request a custom order";
-
+      // brings the product elements to the article and the article to the list
       article.appendChild(imageButton);
       article.appendChild(heading);
       article.appendChild(description);

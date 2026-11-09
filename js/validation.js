@@ -188,17 +188,17 @@ function buildMailto(form) {
   var typeField = form.querySelector('[name="message-type"]');
   var subjectField = form.querySelector('[name="subject"]');
 
-  // Subject line: "Type of message - subject"
+  // Subject: starts with the message type, then adds the subject field if present
   var subject = typeField && typeField.value ? typeField.value : "Website message";
   if (subjectField && subjectField.value.trim() !== "") {
     subject += " - " + subjectField.value.trim();
   }
 
-  // Body: one line per field, using each field's label
+  // Body: each field on its own line, except the subject field which is already in the subject line
   var lines = [];
   form.querySelectorAll("input, textarea, select").forEach(function (field) {
     if (field.name === "subject") {
-      return; // already in the subject line
+      return;
     }
     var label = form.querySelector('label[for="' + field.id + '"]');
     var text = label ? label.textContent.trim() : field.name;
