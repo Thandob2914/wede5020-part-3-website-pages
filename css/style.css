@@ -459,8 +459,8 @@ footer {
 /* Contact page uses a two-column information and message layout. */
 body.contact-page main {
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  grid-template-areas: "intro intro" "details form" "social social";
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "intro" "location" "form" "social";
   gap: 0 2rem;
   width: min(100%, 75rem);
   margin: 0 auto;
@@ -472,8 +472,31 @@ body.contact-page .page-intro {
   text-align: center;
 }
 
+.contact-location {
+  grid-area: location;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+  align-items: stretch;
+  gap: 2rem;
+  width: 100%;
+}
+
+.map-section {
+  min-width: 0;
+  min-height: 22rem;
+}
+
+.map-section iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 22rem;
+  border: 0;
+  border-radius: var(--radius);
+}
+
 .contact-details {
-  grid-area: details;
+  min-width: 0;
 }
 
 .contact-details address {
@@ -930,8 +953,18 @@ main > .audience-band {
 
   body.contact-page main {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "intro" "details" "form" "social";
+    grid-template-areas: "intro" "location" "form" "social";
     width: min(100%, 48rem);
+  }
+
+  .contact-location {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .map-section,
+  .map-section iframe {
+    min-height: 18rem;
   }
 
   .contact-details,
@@ -1124,4 +1157,25 @@ select.invalid {
   background-color: #eef3e8;         /* soft sage tint */
   border-radius: 0.5rem;
 }
- 
+ .map-container {
+  max-width: 100%;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.12);
+}
+
+#map {
+  width: 100%;
+  height: 25rem;
+}
+
+.map-fallback {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  #map {
+    height: 18rem;
+  }
+}
