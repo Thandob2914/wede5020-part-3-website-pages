@@ -17,7 +17,7 @@
   --shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.12);
 }
 
-/* Base styles keep spacing and images consistent on every page. */
+/* Base / keep spacing and images consistent on every page. */
 *,
 *::before,
 *::after {
@@ -1102,3 +1102,26 @@ main > .audience-band {
     transition-duration: 0.01ms !important;
   }
 }
+
+.field-error {
+  display: block;
+  color: #b3261e;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  min-height: 1.2em;
+}
+ 
+input.invalid,
+textarea.invalid,
+select.invalid {
+  border: 0.125rem solid #b3261e;
+}
+ 
+.form-success {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-left: 0.3rem solid #c9a24b; /* gold accent */
+  background-color: #eef3e8;         /* soft sage tint */
+  border-radius: 0.5rem;
+}
+ 
